@@ -1,0 +1,26 @@
+{
+	"name" : "Acl",
+	"display_name" : "Access Control List",
+	"description" : "<p>This middleware is used by user roles. It checks the role configuration and allows/blocks user's connection to a particular resource.</p>",
+	"module_type" : "middlewares",
+	"app_type" : "fintech",
+	"category" : "tools",
+	"version" : "0.0.0",
+	"repo" : "https://github.com/sp-fintech/fintech-middlewares-tools-acl",
+	"class" : "Apps\\Fintech\\Middlewares\\Acl\\Acl",
+	"dependencies" : 
+	{
+		"core" : 
+		{
+			"name" : "Core",
+			"version" : "0.0.0-rc.7",
+			"repo" : "https://github.com/sp-framework/core"
+		},
+		"components" : [],
+		"packages" : [],
+		"middlewares" : [],
+		"views" : [],
+		"external" : []
+	},
+	"settings" : []
+}
