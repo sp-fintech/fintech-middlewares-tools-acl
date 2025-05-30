@@ -25,8 +25,6 @@ class Acl extends BaseMiddleware
 
     protected $accountPermissions;
 
-    protected $rolePermissions;
-
     protected $found = false;
 
     protected $isApi = false;
@@ -65,7 +63,7 @@ class Acl extends BaseMiddleware
         }
 
         if ($this->account) {
-            if (!is_array($this->account['security']['permissions'])) {
+            if (is_string($this->account['security']['permissions'])) {
                 $this->account['security']['permissions'] = $this->helper->decode($this->account['security']['permissions'], true);
             }
 
@@ -152,11 +150,10 @@ class Acl extends BaseMiddleware
             );
 
             if (is_string($this->role['permissions'])) {
-                $this->rolePermissions = $this->helper->decode($this->role['permissions'], true);
-            } else {
-                $this->rolePermissions = $this->role['permissions'];
+                $this->role['permissions'] = $this->helper->decode($this->role['permissions'], true);
             }
-            foreach ($this->rolePermissions as $appKey => $app) {
+
+            foreach ($this->role['permissions'] as $appKey => $app) {
                 foreach ($app as $componentKey => $permission) {
                     if ($this->app['id'] == $appKey) {
                         if ($this->components[$componentKey]['route'] === $this->controllerRoute) {
